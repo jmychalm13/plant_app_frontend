@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Login } from "./Login";
 import { UserPlantsIndex } from "./UserPlantsIndex";
 import { UserPlantsNew } from "./UserPlantsNew";
 
@@ -33,6 +34,7 @@ export function Content() {
 
   return (
     <div>
+      <Login />
       <UserPlantsIndex plants={userPlants} />
       <UserPlantsNew onCreateUserPlant={handleCreateUserPlant} />
     </div>

@@ -4,13 +4,11 @@ import { Login } from "./Login";
 import { UserPlantsIndex } from "./UserPlantsIndex";
 import { UserPlantsNew } from "./UserPlantsNew";
 import { Route, Routes } from "react-router-dom";
+import { PlantSearch } from "./PlantSearch";
 
 export function Content() {
   const [userPlants, setUserPlants] = useState([]);
-  // const headers = {
-  //   "Content-Type": "application/json",
-  //   Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE3MDEyNTg3NjF9.cNIMlVAtEuFUSgsoR1srco3QXsuFzKvaYHFHR9oMrbo`,
-  // };
+
   const handleIndexUserPlants = () => {
     axios.get("http://localhost:3000/user_plants.json").then((response) => {
       console.log(response.data);
@@ -34,6 +32,7 @@ export function Content() {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<UserPlantsIndex plants={userPlants} />} />
         <Route path="/new" element={<UserPlantsNew onCreateUserPlant={handleCreateUserPlant} />} />
+        <Route path="/search" element={<PlantSearch />} />
       </Routes>
     </div>
   );

@@ -3,3 +3,8 @@
 html {
   scroll-behavior: smooth;
 }
+
+.hidden {
+  visibility: hidden;
+}
+

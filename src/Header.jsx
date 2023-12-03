@@ -5,7 +5,7 @@ export function Header() {
     <header>
       <nav>
         <Link to="/">Home</Link> | <Link to="/new">New Plant</Link> | <Link to="/search">Search</Link> |{" "}
-        <Link to="/new_type">New Type</Link> | <Link to="/login">Login</Link>
+        <Link to="/new_type">New Type</Link> | <Link to="/new_zone">New Zone</Link> | <Link to="/login">Login</Link>
       </nav>
     </header>
   );

@@ -6,6 +6,7 @@ import { UserPlantsNew } from "./UserPlantsNew";
 import { Route, Routes } from "react-router-dom";
 import { PlantSearch } from "./PlantSearch";
 import { NewType } from "./NewType";
+import { NewZone } from "./NewZone";
 
 export function Content() {
   const [userPlants, setUserPlants] = useState([]);
@@ -35,6 +36,7 @@ export function Content() {
         <Route path="/new" element={<UserPlantsNew onCreateUserPlant={handleCreateUserPlant} />} />
         <Route path="/search" element={<PlantSearch />} />
         <Route path="/new_type" element={<NewType />} />
+        <Route path="/new_zone" element={<NewZone />} />
       </Routes>
     </div>
   );

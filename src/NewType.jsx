@@ -12,7 +12,7 @@ export function NewType() {
       .post("http://localhost:3000/types.json", params)
       .then((response) => {
         console.log(response);
-        event.target.reset;
+        event.target.reset();
         setShowToast(true);
         setTimeout(() => {
           setShowToast(false);

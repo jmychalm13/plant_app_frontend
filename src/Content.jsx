@@ -5,6 +5,7 @@ import { UserPlantsIndex } from "./UserPlantsIndex";
 import { UserPlantsNew } from "./UserPlantsNew";
 import { Route, Routes } from "react-router-dom";
 import { PlantSearch } from "./PlantSearch";
+import { NewType } from "./NewType";
 
 export function Content() {
   const [userPlants, setUserPlants] = useState([]);
@@ -33,6 +34,7 @@ export function Content() {
         <Route path="/" element={<UserPlantsIndex plants={userPlants} />} />
         <Route path="/new" element={<UserPlantsNew onCreateUserPlant={handleCreateUserPlant} />} />
         <Route path="/search" element={<PlantSearch />} />
+        <Route path="/new_type" element={<NewType />} />
       </Routes>
     </div>
   );

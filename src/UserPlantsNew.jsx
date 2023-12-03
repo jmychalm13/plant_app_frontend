@@ -2,7 +2,6 @@ import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import { ToastNotification } from "./ToastNotification";
-import { Link } from "react-router-dom";
 
 export function UserPlantsNew(props) {
   const [types, setTypes] = useState([]);

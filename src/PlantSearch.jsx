@@ -9,7 +9,7 @@ export function PlantSearch() {
     var formData = new FormData(event.target);
     axios.post("http://localhost:3000/details.json", formData).then((response) => {
       setPlants(response.data);
-      console.log(plants[1]["item"]["Url"]);
+      console.log(plants[0]["item"]);
     });
   };
 
@@ -25,6 +25,12 @@ export function PlantSearch() {
             <i className="fas fa-search"></i>
           </button>
         </form>
+        <div>
+          <h3>Common Names</h3>
+          {/* {plants[0]["item"]["Common name"].map((name) => (
+            <p key={plants[0]["id"]}>{name}</p>
+          ))} */}
+        </div>
       </div>
     </div>
   );

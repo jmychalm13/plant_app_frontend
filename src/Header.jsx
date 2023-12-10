@@ -6,30 +6,39 @@ export function Header() {
   if (localStorage.jwt === undefined) {
     authLinks = (
       <>
-        <li>
-          <Link className="nav-link" to="/signup">
-            Signup
-          </Link>
-        </li>
-        <li>
-          <Link className="nav-link" to="/login">
-            Login
-          </Link>
-        </li>
+        <Link className="nav-link" to="/signup">
+          Signup
+        </Link>
+        <Link className="nav-link" to="/login">
+          Login
+        </Link>
       </>
     );
   } else {
-    authLinks = (
-      <li className="nav-item">
-        <LogoutLink />
-      </li>
-    );
+    authLinks = <LogoutLink />;
   }
   return (
     <header>
       <nav>
-        <Link to="/">Home</Link> | <Link to="/new">New Plant</Link> | <Link to="/search">Search</Link> |{" "}
-        <Link to="/new_type">New Type</Link> | <Link to="/new_zone">New Zone</Link> | {authLinks}
+        <Link className="nav-link" to="/">
+          Home
+        </Link>
+        <Link className="nav-link" to="/new">
+          New Plant
+        </Link>
+        <Link className="nav-link" to="/search">
+          Search
+        </Link>
+        <Link className="nav-link" to="/new_type">
+          New Type
+        </Link>
+        <Link className="nav-link" to="/new_zone">
+          New Zone
+        </Link>
+        <Link className="nav-link" to="/new_water">
+          New Water
+        </Link>
+        {authLinks}
       </nav>
     </header>
   );

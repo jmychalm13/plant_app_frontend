@@ -8,6 +8,7 @@ import { PlantSearch } from "./PlantSearch";
 import { NewType } from "./NewType";
 import { NewZone } from "./NewZone";
 import { NewWater } from "./NewWater";
+import { NewCutting } from "./NewCutting";
 import { Signup } from "./Signup";
 
 export function Content() {
@@ -41,6 +42,7 @@ export function Content() {
         <Route path="/new_zone" element={<NewZone />} />
         <Route path="/new_water" element={<NewWater />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/new_cutting" element={<NewCutting />} />
       </Routes>
     </div>
   );

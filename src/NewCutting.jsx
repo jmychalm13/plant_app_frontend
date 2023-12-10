@@ -6,6 +6,7 @@ export function NewCutting() {
   const [plants, setPlants] = useState([]);
   const [zones, setZones] = useState([]);
   const [showToast, setShowToast] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -37,6 +38,14 @@ export function NewCutting() {
     });
   };
 
+  const handleCheckboxChange = (event) => {
+    if (event.target.checked) {
+      setIsChecked(true);
+    } else {
+      setIsChecked(false);
+    }
+  };
+
   useEffect(getPlantValues, []);
   useEffect(getZoneValues, []);
 
@@ -64,7 +73,7 @@ export function NewCutting() {
         <label htmlFor="date_cut">Date Cut</label>
         <input type="date" name="date_cut" />
         <label htmlFor="roots">Roots</label>
-        <input type="text" name="roots" />
+        <input type="checkbox" checked={isChecked} onChange={handleCheckboxChange} name="roots" />
         <button className="btn" type="submit">
           Add Cutting
         </button>

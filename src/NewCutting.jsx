@@ -13,8 +13,8 @@ export function NewCutting() {
     const params = new FormData(event.target);
     axios
       .post("http://localhost:3000/cuttings.json", params)
-      .then((response) => {
-        console.log(response);
+      // eslint-disable-next-line no-unused-vars
+      .then((_response) => {
         event.target.reset();
         setShowToast(true);
         setTimeout(() => {

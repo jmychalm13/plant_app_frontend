@@ -16,7 +16,6 @@ export function Content() {
 
   const handleIndexUserPlants = () => {
     axios.get("http://localhost:3000/user_plants.json").then((response) => {
-      console.log(response.data);
       setUserPlants(response.data);
     });
   };

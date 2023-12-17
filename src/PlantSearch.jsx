@@ -16,6 +16,7 @@ export function PlantSearch() {
         setInfo(response.data);
         updateFormSubmitted(true);
         console.log(response.data);
+        console.log(info.length);
       }
     });
   };
@@ -35,28 +36,34 @@ export function PlantSearch() {
         <h1>Please enter a search term...</h1>
       ) : info ? (
         <div>
-          <h1>{info["Name"]}</h1>
-          <img src={info["Image"]} alt="" />
-          <h3>General Care Instructions</h3>
-          <p>{info["Care"]}</p>
-          <h3>Possible Problems</h3>
-          <p>{info["Difficulties"]}</p>
-          <h3>Lighting Requirements</h3>
-          <p>{info["Lighting"]}</p>
-          <h3>Humidity Requirements</h3>
-          <p>{info["Humidity"]}</p>
-          <h3>Watering Requiremnts</h3>
-          <p>{info["Watering"]}</p>
-          <h3>Propagation Techniques</h3>
-          <p>{info["Reproduction"]}</p>
-          <h3>Soil Suggestion</h3>
-          <p>{info["Soil"]}</p>
-          <h3>Repotting Suggestion</h3>
-          <p>{info["Transfer"]}</p>
+          <div className="returned_data">
+            <h1>{info["Name"]}</h1>
+            <img src={info["Image"]} alt="" />
+            <h3>General Care Instructions</h3>
+            <p>{info["Care"]}</p>
+            <h3>Possible Problems</h3>
+            <p>{info["Difficulties"]}</p>
+            <h3>Lighting Requirements</h3>
+            <p>{info["Lighting"]}</p>
+            <h3>Humidity Requirements</h3>
+            <p>{info["Humidity"]}</p>
+            <h3>Watering Requiremnts</h3>
+            <p>{info["Watering"]}</p>
+            <h3>Propagation Techniques</h3>
+            <p>{info["Reproduction"]}</p>
+            <h3>Soil Suggestion</h3>
+            <p>{info["Soil"]}</p>
+            <h3>Repotting Suggestion</h3>
+            <p>{info["Transfer"]}</p>
+          </div>
+          <div>
+            <p>Would you like to add this type to your database?</p>
+          </div>
         </div>
       ) : (
         <div>
           <h1>That plant is not in the database.</h1>
+          <p>Would you like to add it anyway?</p>
         </div>
       )}
     </div>

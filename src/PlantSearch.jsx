@@ -15,8 +15,6 @@ export function PlantSearch() {
       } else {
         setInfo(response.data);
         updateFormSubmitted(true);
-        console.log(response.data);
-        console.log(info.length);
       }
     });
   };
@@ -25,11 +23,8 @@ export function PlantSearch() {
     <div>
       <form onSubmit={handleSubmit} className="form-outline">
         <input type="search" id="form1" className="form-control" name="name" />
-        <label className="form-label" htmlFor="form1">
-          Search
-        </label>
         <button type="submit" className="btn btn-primary">
-          <i className="fas fa-search"></i>
+          Search
         </button>
       </form>
       {!formSubmitted ? (

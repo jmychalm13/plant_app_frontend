@@ -5,8 +5,6 @@ import { useState } from "react";
 export function NewType() {
   const [showToast, setShowToast] = useState(false);
 
-  const handleSearch = () => {};
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const params = new FormData(event.target);

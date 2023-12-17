@@ -19,6 +19,16 @@ export function PlantSearch() {
     });
   };
 
+  const addType = () => {
+    const params = {
+      type_name: info["Name"],
+    };
+    console.log(params);
+    axios.post("http://localhost:3000/types.json", params).then((response) => {
+      console.log(response);
+    });
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit} className="form-outline">
@@ -52,7 +62,11 @@ export function PlantSearch() {
             <p>{info["Transfer"]}</p>
           </div>
           <div>
-            <p>Would you like to add this type to your database?</p>
+            <h3>Would you like to add this type to your database?</h3>
+            <button onClick={addType} className="btn btn-primary">
+              Yes
+            </button>
+            <button className="btn btn-primary">No</button>
           </div>
         </div>
       ) : (

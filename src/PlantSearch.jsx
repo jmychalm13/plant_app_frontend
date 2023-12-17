@@ -1,9 +1,11 @@
 import axios from "axios";
 import { useState } from "react";
+import { ToastNotification } from "./ToastNotification";
 
 export function PlantSearch() {
   const [info, setInfo] = useState({});
   const [formSubmitted, updateFormSubmitted] = useState(false);
+  const [showToast, setShowToast] = useState(false);
   const handleSubmit = (event) => {
     event.preventDefault();
     var formData = new FormData(event.target);
@@ -24,9 +26,18 @@ export function PlantSearch() {
       type_name: info["Name"],
     };
     console.log(params);
-    axios.post("http://localhost:3000/types.json", params).then((response) => {
-      console.log(response);
-    });
+    axios
+      .post("http://localhost:3000/types.json", params)
+      .then((response) => {
+        console.log(response);
+        setShowToast(true);
+        setTimeout(() => {
+          setShowToast(false);
+        }, 3000);
+      })
+      .catch((error) => {
+        console.log(error.response.data.errors);
+      });
   };
 
   return (
@@ -63,6 +74,7 @@ export function PlantSearch() {
           </div>
           <div>
             <h3>Would you like to add this type to your database?</h3>
+            {showToast && <ToastNotification message="Type successfully added to the database!" />}
             <button onClick={addType} className="btn btn-primary">
               Yes
             </button>
@@ -71,8 +83,7 @@ export function PlantSearch() {
         </div>
       ) : (
         <div>
-          <h1>That plant is not in the database.</h1>
-          <p>Would you like to add it anyway?</p>
+          <h3>That plant is not in the database.</h3>
         </div>
       )}
     </div>

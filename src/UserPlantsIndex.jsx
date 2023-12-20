@@ -1,4 +1,5 @@
 export function UserPlantsIndex(props) {
+  console.log(props);
   const placeholderImage = "https://i.etsystatic.com/34924524/r/il/cd7edd/4340316619/il_570xN.4340316619_mprg.jpg";
   return (
     <div>
@@ -17,6 +18,12 @@ export function UserPlantsIndex(props) {
                 <p>
                   <strong>Zone: </strong>
                   {plant.zone_name}
+                </p>
+                <p>
+                  <strong>Watering Schedules: </strong>
+                  {plant.watering_schedules.map((schedule) => (
+                    <p key={schedule}>{schedule.schedule}</p>
+                  ))}
                 </p>
               </div>
             </div>

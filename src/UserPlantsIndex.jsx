@@ -10,9 +10,14 @@ export function UserPlantsIndex(props) {
               <img src={plant.img_url ? plant.img_url : placeholderImage} alt="plant image" className="card-img-top" />
               <div className="card-body">
                 <h5>{plant.name}</h5>
-                <p>{plant.type_name}</p>
-                <p>{plant.zone_name}</p>
-                <p>{plant.type_name}</p>
+                <p>
+                  <strong>Type: </strong>
+                  {plant.type_name}
+                </p>
+                <p>
+                  <strong>Zone: </strong>
+                  {plant.zone_name}
+                </p>
               </div>
             </div>
           </div>

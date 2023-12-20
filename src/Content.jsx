@@ -13,6 +13,7 @@ import { Signup } from "./Signup";
 
 export function Content() {
   const [userPlants, setUserPlants] = useState([]);
+  const [showToast, setShowToast] = useState(false);
 
   const handleIndexUserPlants = () => {
     axios.get("http://localhost:3000/user_plants.json").then((response) => {
@@ -22,10 +23,19 @@ export function Content() {
 
   const handleCreateUserPlant = (params, successCallback) => {
     console.log("handleCreateUserPlant", params);
-    axios.post("http://localhost:3000/user_plants.json", params).then((response) => {
-      setUserPlants([...userPlants, response.data]);
-      successCallback();
-    });
+    axios
+      .post("http://localhost:3000/user_plants.json", params)
+      .then((response) => {
+        setUserPlants([...userPlants, response.data]);
+        successCallback();
+        setShowToast(true);
+        setTimeout(() => {
+          setShowToast(false);
+        }, 3000);
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
   };
 
   useEffect(handleIndexUserPlants, []);
@@ -35,7 +45,7 @@ export function Content() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<UserPlantsIndex plants={userPlants} />} />
-        <Route path="/new" element={<UserPlantsNew onCreateUserPlant={handleCreateUserPlant} />} />
+        <Route path="/new" element={<UserPlantsNew toast={showToast} onCreateUserPlant={handleCreateUserPlant} />} />
         <Route path="/search" element={<PlantSearch />} />
         <Route path="/new_type" element={<NewType />} />
         <Route path="/new_zone" element={<NewZone />} />

@@ -1,6 +1,5 @@
 export function UserPlantsIndex(props) {
   const placeholderImage = "https://i.etsystatic.com/34924524/r/il/cd7edd/4340316619/il_570xN.4340316619_mprg.jpg";
-
   return (
     <div>
       <h1>All Plants</h1>

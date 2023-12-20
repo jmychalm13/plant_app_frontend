@@ -6,16 +6,11 @@ import { ToastNotification } from "./ToastNotification";
 export function UserPlantsNew(props) {
   const [types, setTypes] = useState([]);
   const [zones, setZones] = useState([]);
-  const [showToast, setShowToast] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const params = new FormData(event.target);
     props.onCreateUserPlant(params, () => event.target.reset());
-    setShowToast(true);
-    setTimeout(() => {
-      setShowToast(false);
-    }, 3000);
   };
 
   const getTypeValues = () => {
@@ -45,7 +40,7 @@ export function UserPlantsNew(props) {
   return (
     <div>
       <h1>Add New Plant</h1>
-      {showToast && <ToastNotification message="Plant successfully added." />}
+      {props.toast && <ToastNotification message="Plant successfully added." />}
       <form onSubmit={handleSubmit}>
         <div>
           Name: <input name="name" type="text" />

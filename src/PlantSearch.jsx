@@ -41,15 +41,17 @@ export function PlantSearch() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="form-outline">
-        <input type="search" id="form1" className="form-control" name="name" />
-        <button type="submit" className="btn btn-primary">
-          Search
-        </button>
-      </form>
+    <div className="text-center">
       {!formSubmitted ? (
-        <h1>Please enter a search term...</h1>
+        <div>
+          <h1>Type Search</h1>
+          <form onSubmit={handleSubmit} className="form-group">
+            <input type="text" id="form1" className="form-control" name="name" placeholder="Search Term" />
+            <button type="submit" className="btn btn-primary">
+              Search
+            </button>
+          </form>
+        </div>
       ) : info ? (
         <div>
           <div className="returned_data">

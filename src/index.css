@@ -8,3 +8,7 @@ html {
   visibility: hidden;
 }
 
+.card-img-top {
+  max-height: 300px;
+}
+

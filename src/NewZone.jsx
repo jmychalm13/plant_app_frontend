@@ -32,7 +32,9 @@ export function NewZone() {
         <input type="text" name="location_name" />
         <label htmlFor="light_level">Light Level</label>
         <input type="text" name="light_level" />
-        <button type="submit">Add Zone</button>
+        <button className="btn btn-primary" type="submit">
+          Add Zone
+        </button>
       </form>
     </div>
   );

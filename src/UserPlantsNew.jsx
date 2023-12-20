@@ -42,32 +42,42 @@ export function UserPlantsNew(props) {
       <h1>Add New Plant</h1>
       {props.toast && <ToastNotification message="Plant successfully added." />}
       <form onSubmit={handleSubmit}>
-        <div>
-          Name: <input name="name" type="text" />
+        <div className="form-outline mb-4">
+          <input name="name" type="text" className="form-control" />
+          <label htmlFor="name" className="form-label">
+            Name
+          </label>
         </div>
-        <div>
-          Image URL: <input name="img_url" type="text" />
+        <div className="form-outline mb-4">
+          <input name="img_url" type="text" className="form-control" />
+          <label htmlFor="img_url" className="form-label">
+            Image URL
+          </label>
         </div>
-        <div>
-          Type:
+        <div className="form-outline mb-4">
+          <label htmlFor="type" className="form-label">
+            Choose Type
+          </label>
           <select onChange={handleSelect} name="type_id" id="type_id">
             {types.map((type) => (
               <option key={type.id} value={type.id}>
                 {type.type_name}
               </option>
             ))}
-            <option value="new_type">Add New Type</option>
+            <option value="new_type">New Type</option>
           </select>
         </div>
-        <div>
-          Zone:
+        <div className="form-outline mb-4">
+          <label htmlFor="zone" className="form-label">
+            Choose Zone
+          </label>
           <select onChange={handleSelect} name="zone_id" id="zone_id">
             {zones.map((zone) => (
               <option key={zone.id} value={zone.id}>
                 {zone.location_name}
               </option>
             ))}
-            <option value="new_zone">Add New Zone</option>
+            <option value="new_zone">New Zone</option>
           </select>
         </div>
         <button type="submit">Create Plant</button>

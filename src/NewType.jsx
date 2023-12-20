@@ -30,7 +30,9 @@ export function NewType() {
       <form onSubmit={handleSubmit}>
         <label htmlFor="type_name">Add Type</label>
         <input type="text" name="type_name" />
-        <button type="submit">Add Type</button>
+        <button className="btn btn-primary" type="submit">
+          Add Type
+        </button>
       </form>
     </div>
   );

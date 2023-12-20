@@ -47,7 +47,9 @@ export function NewWater() {
         </select>
         <label htmlFor="schedule">Schedule:</label>
         <input type="text" name="schedule" />
-        <button type="submit">Add Schedule</button>
+        <button className="btn btn-primary" type="submit">
+          Add Schedule
+        </button>
       </form>
     </div>
   );

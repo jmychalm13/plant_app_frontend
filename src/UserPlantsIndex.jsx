@@ -19,12 +19,12 @@ export function UserPlantsIndex(props) {
                   <strong>Zone: </strong>
                   {plant.zone_name}
                 </p>
-                <p>
+                <div>
                   <strong>Watering Schedules: </strong>
                   {plant.watering_schedules.map((schedule) => (
-                    <p key={schedule}>{schedule.schedule}</p>
+                    <p key={schedule.id}>{schedule.schedule}</p>
                   ))}
-                </p>
+                </div>
               </div>
             </div>
           </div>

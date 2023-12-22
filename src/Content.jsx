@@ -10,6 +10,7 @@ import { NewZone } from "./NewZone";
 import { NewWater } from "./NewWater";
 import { NewCutting } from "./NewCutting";
 import { Signup } from "./Signup";
+import { FertilizerScheduleNew } from "./FertilizerScheduleNew";
 
 export function Content() {
   const [userPlants, setUserPlants] = useState([]);
@@ -52,6 +53,7 @@ export function Content() {
         <Route path="/new_water" element={<NewWater />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/new_cutting" element={<NewCutting />} />
+        <Route path="/new_fertilizer" element={<FertilizerScheduleNew />} />
       </Routes>
     </div>
   );

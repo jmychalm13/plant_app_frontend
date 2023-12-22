@@ -71,6 +71,9 @@ export function Header() {
               <Link className="dropdown-item" to="/new_water">
                 New Watering Schedule
               </Link>
+              <Link className="dropdown-item" to="new_fertilizer">
+                New Fertilizer Schedule
+              </Link>
             </div>
           </li>
           <li className="nav-item">

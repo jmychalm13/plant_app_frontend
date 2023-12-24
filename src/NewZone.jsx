@@ -24,7 +24,7 @@ export function NewZone() {
   };
 
   return (
-    <div>
+    <div className="container text-center">
       <h1>Add New Zone</h1>
       {showToast && <ToastNotification message="Successfully added to the database!" />}
       <form onSubmit={handleSubmit}>

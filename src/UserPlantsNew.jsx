@@ -38,7 +38,7 @@ export function UserPlantsNew(props) {
   useEffect(getZoneValues, []);
 
   return (
-    <div>
+    <div className="container">
       <h1>Add New Plant</h1>
       {props.toast && <ToastNotification message="Plant successfully added." />}
       <form onSubmit={handleSubmit}>

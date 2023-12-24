@@ -33,7 +33,7 @@ export function NewWater() {
   useEffect(getPlantValues, []);
 
   return (
-    <div>
+    <div className="container text-center">
       <h1>New Watering Schedule</h1>
       {showToast && <ToastNotification message="Schedule successfully added to the database!" />}
       <form onSubmit={handleSubmit}>

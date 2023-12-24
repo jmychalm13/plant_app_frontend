@@ -1,5 +1,5 @@
 export function UserPlantsIndex(props) {
-  console.log(props);
+  console.log("Props", props);
   const placeholderImage = "https://i.etsystatic.com/34924524/r/il/cd7edd/4340316619/il_570xN.4340316619_mprg.jpg";
   return (
     <div className="container text-center">
@@ -26,6 +26,7 @@ export function UserPlantsIndex(props) {
                   ))}
                 </div>
               </div>
+              <button onClick={() => props.onSelectUserPlant(plant)} className="btn btn-primary"></button>
             </div>
           </div>
         ))}

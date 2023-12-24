@@ -26,7 +26,9 @@ export function UserPlantsIndex(props) {
                   ))}
                 </div>
               </div>
-              <button onClick={() => props.onSelectUserPlant(plant)} className="btn btn-primary"></button>
+              <button onClick={() => props.onSelectUserPlant(plant)} className="btn btn-primary">
+                More Info
+              </button>
             </div>
           </div>
         ))}

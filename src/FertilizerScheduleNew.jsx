@@ -1,7 +1,3 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { ToastNotification } from "./ToastNotification";
-
 export function FertilizerScheduleNew() {
   const [plants, setPlants] = useState([]);
   const [showToast, setShowToast] = useState(false);
@@ -24,6 +20,29 @@ export function FertilizerScheduleNew() {
         setTimeout(() => {
           setShowToast(false);
         }, 3000);
+      })
+      .catch((error) => {
+        console.log(error.response.data.errors);
+      });
+  };
+
+  useEffect(getPlantValues, []);
+
+  const [plants, setPlants] = useState([]);
+
+  const getPlantValues = () => {
+    axios.get("http://localhost:3000/dropdowns/plant.json").then((response) => {
+      setPlants(response.data);
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const params = new FormData(event.target);
+    axios
+      .post("http://localhost:3000/fertilizer_schedules.json", params)
+      .then((response) => {
+        console.log(response);
       })
       .catch((error) => {
         console.log(error.response.data.errors);

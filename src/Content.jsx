@@ -98,7 +98,7 @@ export function Content() {
         />
 
         {/* Default Route */}
-        <Route path="/" element={<UserPlantsIndex plants={userPlants} />} />
+        <Route path="/" element={<UserPlantsIndex plants={userPlants} onSelectUserPlant={handleShowUserPlant} />} />
       </Routes>
 
       <Modal show={isPlantShowVisible} onClose={handleHideUserPlant}>

@@ -15,6 +15,7 @@ export function UserPlantsShow(props) {
   const [wateringSchedules, setWateringSchedules] = useState(initialWateringSchedules);
   const [fertilizerSchedules, setFertilizerSchedules] = useState(initialFertilizerSchedules);
   const [selectedZoneId, setSelectedZoneId] = useState(props.plant.zone_id);
+  const [initialZone, setInitialZone] = useState(props.plant.zone_name);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -49,6 +50,10 @@ export function UserPlantsShow(props) {
     setFertilizerSchedules(updatedFertilizerSchedules);
   };
 
+  const handleClick = () => {
+    props.onDestroyPlant(props.plant.id);
+  };
+
   const handleZoneChange = (event) => {
     const selectedValue = event.target.value;
     setSelectedZoneId(selectedValue);
@@ -69,7 +74,7 @@ export function UserPlantsShow(props) {
         </div>
         <div className="form-group">
           <strong>Zone:</strong>
-          <select name="zone_id" defaultValue={props.plant.zone_name} id="zone_id" onChange={handleZoneChange}>
+          <select className="form-select" name="zone_id" value={initialZone} id="zone_id" onChange={handleZoneChange}>
             {zones.map((zone) => (
               <option key={zone.id} value={zone.id}>
                 {zone.location_name}
@@ -79,7 +84,7 @@ export function UserPlantsShow(props) {
         </div>
         <div className="form-group">
           <strong>Type:</strong>
-          <select name="type_name" defaultValue={props.plant.type_name} id="type_name">
+          <select className="form-select" name="type_name" defaultValue={props.plant.type_name} id="type_name">
             {types.map((type) => (
               <option key={type.id} defaultValue={props.plant.type_name} id="type_name">
                 {type.type_name}
@@ -110,7 +115,7 @@ export function UserPlantsShow(props) {
           ))}
         </div>
         <button type="submit">Update</button>
-        <button>Delete</button>
+        <button onClick={handleClick}>Delete</button>
       </form>
     </div>
   );

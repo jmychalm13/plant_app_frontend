@@ -14,14 +14,15 @@ export function UserPlantsShow(props) {
   const [types, setTypes] = useState([]);
   const [wateringSchedules, setWateringSchedules] = useState(initialWateringSchedules);
   const [fertilizerSchedules, setFertilizerSchedules] = useState(initialFertilizerSchedules);
+  const [selectedZoneId, setSelectedZoneId] = useState(props.plant.zone_id);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const params = new FormData(event.target);
+    params.set("zone_id", selectedZoneId);
     props.onUpdatePlant(props.plant.id, params);
     props.closeModal();
     event.target.reset();
-    console.log("params", params);
   };
 
   const getZoneValues = () => {
@@ -48,6 +49,11 @@ export function UserPlantsShow(props) {
     setFertilizerSchedules(updatedFertilizerSchedules);
   };
 
+  const handleZoneChange = (event) => {
+    const selectedValue = event.target.value;
+    setSelectedZoneId(selectedValue);
+  };
+
   useEffect(getZoneValues, []);
   useEffect(getTypeValues, []);
 
@@ -63,7 +69,7 @@ export function UserPlantsShow(props) {
         </div>
         <div className="form-group">
           <strong>Zone:</strong>
-          <select name="zone_id" defaultValue={props.plant.zone_name} id="zone_id">
+          <select name="zone_id" defaultValue={props.plant.zone_name} id="zone_id" onChange={handleZoneChange}>
             {zones.map((zone) => (
               <option key={zone.id} value={zone.id}>
                 {zone.location_name}

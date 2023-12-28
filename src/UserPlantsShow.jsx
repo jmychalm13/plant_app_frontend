@@ -15,7 +15,7 @@ export function UserPlantsShow(props) {
   const [wateringSchedules, setWateringSchedules] = useState(initialWateringSchedules);
   const [fertilizerSchedules, setFertilizerSchedules] = useState(initialFertilizerSchedules);
   const [selectedZoneId, setSelectedZoneId] = useState(props.plant.zone_id);
-  const [initialZone, setInitialZone] = useState(props.plant.zone_name);
+  const [initialZone, setInitialZone] = useState(props.plant.zone_id);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -43,6 +43,7 @@ export function UserPlantsShow(props) {
     updatedWateringSchedules[index] = newValue;
     setWateringSchedules(updatedWateringSchedules);
   };
+  console.log(props);
 
   const handleFertilizerScheduleChange = (index, newValue) => {
     const updatedFertilizerSchedules = [...fertilizerSchedules];
@@ -84,9 +85,9 @@ export function UserPlantsShow(props) {
         </div>
         <div className="form-group">
           <strong>Type:</strong>
-          <select className="form-select" name="type_name" defaultValue={props.plant.type_name} id="type_name">
+          <select className="form-select" name="type_name" value={props.plant.type_id} id="type_name">
             {types.map((type) => (
-              <option key={type.id} defaultValue={props.plant.type_name} id="type_name">
+              <option key={type.id} value={type.id} id="type_name">
                 {type.type_name}
               </option>
             ))}

@@ -2,25 +2,17 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 export function UserPlantsShow(props) {
-  const initialWateringSchedules = Array.isArray(props.plant.watering_schedules)
-    ? props.plant.watering_schedules.map((schedule) => schedule.schedule)
-    : [];
-
-  const initialFertilizerSchedules = Array.isArray(props.plant.fertilizer_schedules)
-    ? props.plant.fertilizer_schedules.map((schedule) => schedule.schedule)
-    : [];
-
   const [zones, setZones] = useState([]);
   const [types, setTypes] = useState([]);
-  const [wateringSchedules, setWateringSchedules] = useState(initialWateringSchedules);
-  const [fertilizerSchedules, setFertilizerSchedules] = useState(initialFertilizerSchedules);
   const [selectedZoneId, setSelectedZoneId] = useState(props.plant.zone_id);
+  const [selectedTypeId, setSelectedTypeId] = useState(props.plant.type_id);
   const [initialZone, setInitialZone] = useState(props.plant.zone_id);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const params = new FormData(event.target);
     params.set("zone_id", selectedZoneId);
+    params.set("type_id", selectedTypeId);
     props.onUpdatePlant(props.plant.id, params);
     props.closeModal();
     event.target.reset();
@@ -38,19 +30,6 @@ export function UserPlantsShow(props) {
     });
   };
 
-  const handleWaterScheduleChange = (index, newValue) => {
-    const updatedWateringSchedules = [...wateringSchedules];
-    updatedWateringSchedules[index] = newValue;
-    setWateringSchedules(updatedWateringSchedules);
-  };
-  console.log(props);
-
-  const handleFertilizerScheduleChange = (index, newValue) => {
-    const updatedFertilizerSchedules = [...fertilizerSchedules];
-    updatedFertilizerSchedules[index] = newValue;
-    setFertilizerSchedules(updatedFertilizerSchedules);
-  };
-
   const handleClick = () => {
     props.onDestroyPlant(props.plant.id);
   };
@@ -58,6 +37,11 @@ export function UserPlantsShow(props) {
   const handleZoneChange = (event) => {
     const selectedValue = event.target.value;
     setSelectedZoneId(selectedValue);
+  };
+
+  const handleTypeChange = (event) => {
+    const selectedValue = event.target.value;
+    setSelectedTypeId(selectedValue);
   };
 
   useEffect(getZoneValues, []);
@@ -75,7 +59,13 @@ export function UserPlantsShow(props) {
         </div>
         <div className="form-group">
           <strong>Zone:</strong>
-          <select className="form-select" name="zone_id" value={initialZone} id="zone_id" onChange={handleZoneChange}>
+          <select
+            className="form-select"
+            name="zone_id"
+            defaultValue={initialZone}
+            id="zone_id"
+            onChange={handleZoneChange}
+          >
             {zones.map((zone) => (
               <option key={zone.id} value={zone.id}>
                 {zone.location_name}
@@ -85,7 +75,13 @@ export function UserPlantsShow(props) {
         </div>
         <div className="form-group">
           <strong>Type:</strong>
-          <select className="form-select" name="type_name" value={props.plant.type_id} id="type_name">
+          <select
+            className="form-select"
+            name="type_name"
+            defaultValue={props.plant.type_id}
+            id="type_name"
+            onChange={handleTypeChange}
+          >
             {types.map((type) => (
               <option key={type.id} value={type.id} id="type_name">
                 {type.type_name}
@@ -95,25 +91,9 @@ export function UserPlantsShow(props) {
         </div>
         <div className="form-group">
           <strong>Watering Schedules:</strong>
-          {wateringSchedules.map((schedule, index) => (
-            <input
-              key={index}
-              type="text"
-              value={schedule}
-              onChange={(e) => handleWaterScheduleChange(index, e.target.value)}
-            ></input>
-          ))}
         </div>
         <div className="form-group">
           <strong>Fertilizer Schedules:</strong>
-          {fertilizerSchedules.map((schedule, index) => (
-            <input
-              key={index}
-              type="text"
-              value={schedule}
-              onChange={(e) => handleFertilizerScheduleChange(index, e.target.value)}
-            ></input>
-          ))}
         </div>
         <button type="submit">Update</button>
         <button onClick={handleClick}>Delete</button>

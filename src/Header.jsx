@@ -24,9 +24,9 @@ export function Header() {
     authLinks = <LogoutLink />;
   }
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg">
       <a className="navbar-brand" href="#">
-        <img src="src/assets/logo-transparent-png.png" width="45" height="45" alt="" />
+        <img src="src/assets/monstera.png" width="50" height="50" alt="" />
       </a>
       <button
         className="navbar-toggler"
@@ -41,7 +41,7 @@ export function Header() {
       </button>
       <div className="collapse navbar-collapse" id="navbarNavDropdown">
         <ul className="navbar-nav">
-          <li className="nav-item active">
+          <li className="nav-item">
             <Link className="nav-link" to="/">
               Home
             </Link>

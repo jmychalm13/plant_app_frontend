@@ -4,6 +4,48 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  color: mintcream;
+}
+
+nav {
+  background-color: #355E3B;
+}
+
+nav .nav-link {
+  color: mintcream;
+}
+
+.nav-link:focus, .nav-link:hover {
+  color: rgb(216, 243, 230);
+}
+
+nav .nav-link:hover {
+  color: rgb(216, 243, 230);
+}
+
+nav .nav-link:active,
+nav .nav-link:focus {
+  color: rgb(168, 204, 187);
+}
+
+nav .dropdown-menu {
+  background-color: #355E3B;
+}
+
+nav .dropdown-menu .dropdown-item {
+  color: mintcream;
+}
+
+nav .dropdown-menu .dropdown-item:hover {
+  background-color: #355E3B;
+  color: rgb(216, 243, 230);
+}
+
+body {
+  background-color: mintcream;
+}
+
 .hidden {
   visibility: hidden;
 }
